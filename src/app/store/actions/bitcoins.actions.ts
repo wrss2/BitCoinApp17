@@ -6,7 +6,7 @@ export const loadBitCoinsCurrencies = createAction(
 );
 export const loadBitCoinsCurrenciesSuccess  = createAction(
   '[Currencies Load Success] Load Currencies Success',
-  props<{ bitcoins: cryptoTick[] }>()
+  props<{ bitcoins: cryptoTick[]}>()
 );
 export const loadBitCoinsCurrenciesFailure = createAction(
   '[Currencies Load Failure] Load Currencies Failure',

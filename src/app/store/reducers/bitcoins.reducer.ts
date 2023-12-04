@@ -1,7 +1,7 @@
 import {ActionReducer, ActionReducerMap, createReducer, INIT, MetaReducer, on, State} from '@ngrx/store';
 import {AppState, initialState} from '../../models/states';
 import {
-  addToFavorites, browserReload,
+  addToFavorites, browserReload, loadBitCoinsCurrencies, loadBitCoinsCurrenciesFailure,
   loadBitCoinsCurrenciesSuccess,
   removeFromFavorites
 } from "../actions/bitcoins.actions";
@@ -10,22 +10,24 @@ import _ from "lodash";
 
 export const bitcoinReducer = createReducer(
   initialState,
-  on(loadBitCoinsCurrenciesSuccess,browserReload, (state,  { bitcoins }) => {
+  on(loadBitCoinsCurrencies, (state, action) => ({...state,isLoading:true})),
+  on(loadBitCoinsCurrenciesFailure, (state, action) => ({...state,isLoading:false, errors:"Load BitCoins List Error"})),
+  on(loadBitCoinsCurrenciesSuccess, (state,action) => {
       const storageValue = localStorage.getItem("state");
        if (storageValue) {
          try{
            let store = JSON.parse(storageValue);
            if(store?.states?.bitcoins?.length > 0){
-             return ({...state, bitcoins: store.states.bitcoins})
+             return ({...state, bitcoins: store.states.bitcoins, isLoading:false, errors: "No errors"})
            }
          } catch {
              localStorage.removeItem("state");
          }
       }
-      return ({...state, bitcoins})
+      return ({...state, bitcoins:action.bitcoins,isLoading:false})
   }),
-  on(addToFavorites, (state, {bitCoinId} ) => {
-    let index = state.bitcoins.findIndex((item)=> item.id == bitCoinId)
+  on(addToFavorites, (state,action ) => {
+    let index = state.bitcoins.findIndex((item)=> item.id == action.bitCoinId)
     if (index !== -1) {
       //const copyBitcoins:cryptoTick[] = _.cloneDeep(state.bitcoins);
       const updatedBitcoins = [...state.bitcoins];
