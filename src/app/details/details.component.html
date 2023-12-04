@@ -1,0 +1,148 @@
+<div class="container detail">
+<!--  <div class="list-wrapper">-->
+<!--    <div class="list">-->
+<!--      @for (row of detailsData2 | keyvalue; track row) {-->
+<!--        <div class="item"  *ngFor="let item of detailsData2 | keyvalue">-->
+<!--          <div class="title">{{item.key?.toLocaleString() | textTransform | titlecase}}:</div>-->
+<!--          <div class="value">{{item.value}}</div>-->
+<!--          <div class="value">{{checkType(item.value)}}</div>-->
+<!--        </div>-->
+<!--      }-->
+<!--    </div>-->
+<!--    <div class="list">-->
+<!--      @for (row of detailsData2?.quotes?.USD | keyvalue; track row) {-->
+<!--      <div class="item"  *ngFor="let item of detailsData2 | keyvalue">-->
+<!--        <div class="title">{{item.key?.toLocaleString() | textTransform | titlecase}}:</div>-->
+<!--          <div class="value">{{item.value}}</div>-->
+<!--          <div class="value">{{checkType(item.value)}}</div>-->
+<!--        </div>-->
+<!--      }-->
+<!--    </div>-->
+<!--  </div>-->
+
+  @if ((detailsData | keyvalue)?.length){
+      <div class="main-title">
+        <h1>Today's {{detailsData?.name}} <img class="crypto-icon" src="/assets/cryptoicons/{{detailsData?.symbol | lowercase}}.svg"/> Details</h1>
+      </div>
+
+      <div class="list-wrapper">
+        <div class="list">
+          <div class="item">
+            <div class="title">Beta value:</div>
+            <div class="value">{{detailsData?.beta_value}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Circulating supply:</div>
+            <div class="value">{{detailsData?.circulating_supply |  localString:0}}</div>
+          </div>
+          <div class="item">
+            <div class="title">First data at:</div>
+            <div class="value">{{detailsData?.first_data_at | date:'yyyy-MM-dd'}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Last updated:</div>
+            <div class="value">{{detailsData?.last_updated  | date:'yyyy-MM-dd'}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Max supply:</div>
+            <div class="value">{{detailsData?.max_supply |  localString:0}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Name:</div>
+            <div class="value">{{detailsData?.name}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Rank:</div>
+            <div class="value">{{detailsData?.rank}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Symbol:</div>
+            <div class="value">{{detailsData?.symbol}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Total upply:</div>
+            <div class="value">{{detailsData?.total_supply |  localString:0}}</div>
+          </div>
+        </div>
+
+        <div class="list">
+          <div class="item">
+            <div class="title">Ath date:</div>
+            <div class="value">{{detailsData?.quotes?.USD?.ath_date | date:'yyyy-MM-dd'}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Ath price:</div>
+            <div class="value">{{detailsData?.quotes?.USD?.ath_price  |  localString:2}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Market cap:</div>
+            <div class="value">{{detailsData?.quotes?.USD?.market_cap |  localString:0}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Market cap change 24h:</div>
+            <div class="value">{{detailsData?.quotes?.USD?.market_cap_change_24h | percent}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Percent change 1h:</div>
+            <div class="value">{{detailsData?.quotes?.USD?.percent_change_1h | percent}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Percent change 1y:</div>
+            <div class="value">{{detailsData?.quotes?.USD?.percent_change_1y | percent}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Percent change 6h:</div>
+            <div class="value">{{detailsData?.quotes?.USD?.percent_change_6h | percent}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Percent change 7d:</div>
+            <div class="value">{{detailsData?.quotes?.USD?.percent_change_7d | percent}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Percent change 12h:</div>
+            <div class="value">{{detailsData?.quotes?.USD?.percent_change_12h | percent}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Percent change 15m:</div>
+            <div class="value">{{detailsData?.quotes?.USD?.percent_change_15m | percent}}</div>
+          </div>
+          <div class="item">
+            <div class="title">percent_change_24h:</div>
+            <div class="value">{{detailsData?.quotes?.USD?.percent_change_24h | percent}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Percent change 30d:</div>
+            <div class="value">{{detailsData?.quotes?.USD?.percent_change_30d | percent }}</div>
+          </div>
+          <div class="item">
+            <div class="title">Percent change 30m:</div>
+            <div class="value">{{detailsData?.quotes?.USD?.percent_change_30m | percent}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Percent from price ath:</div>
+            <div class="value">{{detailsData?.quotes?.USD?.percent_from_price_ath  | percent}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Price:</div>
+            <div class="value">{{detailsData?.quotes?.USD?.price | currency:'USD'  |  localString:2}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Volume 24h:</div>
+            <div class="value">{{detailsData?.quotes?.USD?.volume_24h |  localString:2}}</div>
+          </div>
+          <div class="item">
+            <div class="title">Volume 24h change 24h:</div>
+            <div class="value">{{detailsData?.quotes?.USD?.volume_24h_change_24h |  localString:2}}</div>
+          </div>
+        </div>
+      </div>
+
+  } @else {
+      <div class="main-title">
+        <h1>No Data</h1>
+      </div>
+  }
+
+</div>
+
+

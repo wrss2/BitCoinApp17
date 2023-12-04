@@ -1,0 +1,14 @@
+:host{
+  margin-top: auto;
+}
+
+.footer{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  padding: 12px 0;
+  font-size: 0.875rem;
+  color: var(--text-color);
+}
+
+

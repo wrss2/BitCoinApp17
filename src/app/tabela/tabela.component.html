@@ -1,0 +1,63 @@
+<div class="main-title">
+  <h1>Today's Cryptocurrency Prices</h1>
+  <p>The global crypto market cap is <span class="highlight">$1.42T</span>, a
+    <span  class="up-trend">
+      <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6" fill="none">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M4 0L8 6H0L4 0Z" fill="#509747"/>
+      </svg>
+      2.04%
+    </span>
+    increase over the last day. <a href="#">Read More</a>
+  </p>
+</div>
+<div class="table-container">
+  <table>
+    <thead>
+    <tr>
+      <th class="star-header"></th>
+      <th class="rank-header">#</th>
+      <th class="text-left">Name</th>
+      <th>Price</th>
+      <th>1h%</th>
+      <th>24h%</th>
+      <th>7d%</th>
+      <th>Market Cap</th>
+      <th>Volume (24h)</th>
+      <th>Circulating Supply</th>
+    </tr>
+    </thead>
+    <tbody>
+    @for (row of tabelaData$ | async; track row) {
+        <tr (click)=rowClick($event,row)>
+          <td class="text-center star-button" (click)="toggleFavorite(row.id)">
+            @if (row.favorite){
+              <i class="fa-solid fa-star"></i>
+              } @else {
+              <i class="far fa-star"></i>
+              }
+          </td>
+           <td class="rank-header">{{row.rank}}</td>
+            <td class="text-left">
+              <div class="crypto-title">
+                <img class="crypto-icon" src="/assets/cryptoicons/{{row.symbol | lowercase}}.svg"/> {{row.name}}
+                <span class="symbol">{{row.symbol}}</span>
+              </div>
+            </td>
+            <td>{{row.quotes[currencyId].price | currency:'USD' | localString:2}}</td>
+            <td>{{row.quotes[currencyId].percent_change_1h | percent }}</td>
+            <td>{{row.quotes[currencyId].percent_change_24h | percent }}</td>
+            <td>{{row.quotes[currencyId].percent_change_7d | percent }}</td>
+            <td>{{(row.quotes[currencyId].market_cap | localString: 0) }}</td>
+            <td>{{row.quotes[currencyId].volume_24h | localString }}</td>
+            <td>{{row.circulating_supply | localString}}</td>
+        </tr>
+    } @empty {
+      <td colspan="10" class="no-border">
+        <div class="alert alert-danger text-center" role="alert">
+          Lista pusta
+        </div>
+      </td>
+    }
+    </tbody>
+  </table>
+</div>
