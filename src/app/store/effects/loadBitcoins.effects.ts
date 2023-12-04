@@ -6,7 +6,7 @@ import {
   loadBitCoinsCurrenciesFailure,
   loadBitCoinsCurrenciesSuccess
 } from '../actions/bitcoins.actions';
-import {catchError, switchMap, tap} from 'rxjs/operators';
+import {catchError, concatMap, switchMap, tap} from 'rxjs/operators';
 import {BitcoinService} from "../../services/bitcoin.service";
 import {from, map, of} from "rxjs";
 
@@ -20,7 +20,7 @@ export class LoadBitcoinsEffects {
   loadItems$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadBitCoinsCurrencies),
-      switchMap(() =>
+      concatMap(() =>
         this.bitcoinService.getBitcoinData().pipe(
           map(bitcoins => {
               return loadBitCoinsCurrenciesSuccess({bitcoins})
