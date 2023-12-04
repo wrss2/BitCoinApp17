@@ -9,6 +9,7 @@ import {AppState} from "../models/states";
 import {selectBitcoinsDetailState} from "../store/selectors/bitcoins.selectors";
 import {filter} from "rxjs";
 import {loadBitCoinsCurrencies} from "../store/actions/bitcoins.actions";
+import {cryptoTick} from "../models/crypto-tick";
 @Component({
   selector: 'app-details',
   standalone: true,
@@ -21,7 +22,8 @@ import {loadBitCoinsCurrencies} from "../store/actions/bitcoins.actions";
 export class CryptoDetailComponent implements  OnInit{
 
   id:string = '';
-  detailsData:any;
+  currencyId:string = 'USD';
+  detailsData:cryptoTick | undefined;
   constructor(
     private route: ActivatedRoute,
     private router:Router,

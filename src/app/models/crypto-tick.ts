@@ -1,15 +1,16 @@
 export class cryptoTick {
-    id:string
-    name:string
-    rank:number
-    symbol:string
-    total_supply:number
-    beta_value:number
-    circulating_supply:number
-    first_data_at:string
-    max_supply:number
+    id:string = ''
+    name:string = ''
+    rank:number = 0
+    symbol:string = ''
+    total_supply:number = 0
+    beta_value:number = 0
+    circulating_supply:number = 0
+    first_data_at:string = ''
+    max_supply:number = 0
     favorite:boolean = false
-    quotes:quotesCryptoTick
+    last_updated:string = ''
+    quotes:quotesCryptoTick = {};
 }
 
 export class quotesCryptoTick {
