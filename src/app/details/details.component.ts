@@ -23,7 +23,7 @@ export class CryptoDetailComponent implements  OnInit{
 
   id:string = '';
   currencyId:string = 'USD';
-  detailsData:cryptoTick | undefined;
+  detailsData:cryptoTick = new cryptoTick();
   constructor(
     private route: ActivatedRoute,
     private router:Router,
@@ -32,7 +32,9 @@ export class CryptoDetailComponent implements  OnInit{
   ) {
     this.id = this.route.snapshot.params['id'];
     this.store.select(selectBitcoinsDetailState(this.id)).subscribe((details) => {
-      this.detailsData = details
+      if (details) {
+        this.detailsData = details;
+      }
     });
 
    // Inne wersje ładowania strony szczegółowej
