@@ -66,11 +66,11 @@ export class CryptoDetailComponent implements  OnInit{
           for (let [key, value] of Object.entries(detailsCurrency)) {
             if(typeof value !== 'object' && typeof value !== 'boolean') {
               transformedDetails[key] = this.formatField(key, value)
-            } else if (typeof value === 'object'){
-              transformedDetails['quotes'] = []
-              transformedDetails['quotes'][this.currencyId] = {}
-              for (let [key, value] of Object.entries(detailsCurrency['quotes'][this.currencyId])) {
-                transformedDetails['quotes'][this.currencyId][key] = this.formatField(key, value)
+            } else if (typeof value === 'object' && key == 'quotes'){
+              transformedDetails[key] = []
+              transformedDetails[key][this.currencyId] = {}
+              for (let [subKey, value] of Object.entries(detailsCurrency[key][this.currencyId])) {
+                transformedDetails[key][this.currencyId][subKey] = this.formatField(key, value)
               }
             }
           }
