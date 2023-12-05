@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, HostListener, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {CommonModule} from "@angular/common";
 import {BitcoinService} from "../services/bitcoin.service";
@@ -16,6 +16,7 @@ import {cryptoTick} from "../models/crypto-tick";
   imports: [
     CommonModule,TextTransformPipe,LocalStringPipe
   ],
+  changeDetection:ChangeDetectionStrategy.OnPush,
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })

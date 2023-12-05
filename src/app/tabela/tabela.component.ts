@@ -1,4 +1,4 @@
-import {Component,  OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {CommonModule} from "@angular/common";
 import {LocalStringPipe} from "../pipes/local-string.pipe";
 import {cryptoTick} from "../models/crypto-tick";
@@ -14,6 +14,7 @@ import data from '../../db/tickers.json';
 @Component({
   selector: 'app-tabela',
   standalone: true,
+  changeDetection:ChangeDetectionStrategy.OnPush,
   imports: [CommonModule, LocalStringPipe, ],
   templateUrl: './tabela.component.html',
   styleUrl: './tabela.component.scss'
