@@ -15,7 +15,7 @@ import data from '../../db/tickers.json';
   selector: 'app-tabela',
   standalone: true,
   changeDetection:ChangeDetectionStrategy.OnPush,
-  imports: [CommonModule, LocalStringPipe, ],
+  imports: [CommonModule, LocalStringPipe ],
   templateUrl: './tabela.component.html',
   styleUrl: './tabela.component.scss'
 })

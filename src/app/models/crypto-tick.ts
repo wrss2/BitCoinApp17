@@ -6,16 +6,16 @@ export class cryptoTick {
     total_supply:number = 0
     beta_value:number = 0
     circulating_supply:number = 0
-    first_data_at:string = ''
+    first_data_at:Date = new Date()
     max_supply:number = 0
     favorite:boolean = false
-    last_updated:string = ''
+    last_updated:Date = new Date()
     quotes:quotesCryptoTick = {};
 }
 
 export class quotesCryptoTick {
     [currencyCode: string]: {
-        ath_date: string
+        ath_date: Date
         ath_price: number
         market_cap: number
         market_cap_change_24h: number

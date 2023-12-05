@@ -7,7 +7,7 @@ import {LoadBitcoinsEffects} from "./store/effects/loadBitcoins.effects";
 import {metaReducers, reducers} from "./store/reducers/bitcoins.reducer";
 import {EffectsModule} from "@ngrx/effects";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
-import {DatePipe, DecimalPipe} from "@angular/common";
+import {DatePipe, DecimalPipe, PercentPipe} from "@angular/common";
 import {BitcoinService} from "./services/bitcoin.service";
 import {provideHttpClient} from "@angular/common/http";
 
@@ -22,8 +22,6 @@ export const appConfig: ApplicationConfig = {
     { provide: LOCALE_ID, useValue: 'en-US' },
     importProvidersFrom(
       ToastrModule.forRoot(),
-      DecimalPipe,
-      DatePipe,
       StoreModule.forRoot(reducers, {metaReducers} ),
       StoreDevtoolsModule.instrument({
         maxAge: 50,

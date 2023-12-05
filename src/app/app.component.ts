@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, PercentPipe} from '@angular/common';
 import {RouterOutlet} from '@angular/router';
 import {FooterComponent} from "./ui-components/footer/footer.component";
 import {HeaderComponent} from "./ui-components/header/header.component";
@@ -14,7 +14,7 @@ import {HttpClientModule} from "@angular/common/http";
     RouterOutlet,
     FooterComponent,
     HeaderComponent,
-    HttpClientModule
+    HttpClientModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
