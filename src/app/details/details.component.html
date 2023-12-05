@@ -8,7 +8,7 @@
                 @for (row of detailsData$ | async | keyvalue; track row) {
                    @if(row.key != 'quotes' && row.key != 'favorite'  ){
                       <div class="item">
-                          <div class="title">{{row.key?.toLocaleString() | textTransform | titlecase}}:</div>
+                          <div class="title">{{row.key  | titlecase | textTransform}}:</div>
                           <div class="value">{{row.value}}</div>
                       </div>
                    }
@@ -17,7 +17,7 @@
             <div class="list">
               @for (row of detailsData?.quotes?.USD | keyvalue; track row) {
                 <div class="item" >
-                  <div class="title">{{row.key?.toLocaleString() | textTransform | titlecase}}:</div>
+                  <div class="title">{{row.key | titlecase | textTransform }}:</div>
                   <div class="value">{{row.value}}</div>
                 </div>
               }
